@@ -49,7 +49,7 @@ class Dishwasher
               (is_omp_corrected.nil? || is_omp_corrected.to_s.strip.empty?)
 
       # Get the trading name for grouping
-      group_name = trading_name_corrected.to_s if !trading_name_corrected.nil? && !trading_name_corrected.to_s.strip.empty?
+      group_name = trading_name_corrected.to_s.strip if !trading_name_corrected.nil? && !trading_name_corrected.to_s.strip.empty?
       group_name ||= trading_name
 
       # Initialize or update the group
@@ -63,15 +63,15 @@ class Dishwasher
 
       # Update the corrections with any non-nil values
       if !trading_name_corrected.nil? && !trading_name_corrected.to_s.strip.empty?
-        corrections_by_name[group_name][:updates][:trading_name] = trading_name_corrected.to_s
+        corrections_by_name[group_name][:updates][:trading_name] = trading_name_corrected.to_s.strip
       end
 
       if !company_number_corrected.nil? && !company_number_corrected.to_s.strip.empty?
-        corrections_by_name[group_name][:updates][:company_number] = company_number_corrected.to_s
+        corrections_by_name[group_name][:updates][:company_number] = company_number_corrected.to_s.strip
       end
 
       if !legal_name_corrected.nil? && !legal_name_corrected.to_s.strip.empty?
-        corrections_by_name[group_name][:updates][:legal_name] = legal_name_corrected.to_s
+        corrections_by_name[group_name][:updates][:legal_name] = legal_name_corrected.to_s.strip
       end
 
       # Handle online marketplace updates
