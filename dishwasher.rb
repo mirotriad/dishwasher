@@ -26,7 +26,7 @@ class Dishwasher
     corrections_by_name = {}
 
     # Process each row within the specified range
-    ((start_line + 1)..(end_line + 1)).each do |row_num|
+    (start_line..end_line).each do |row_num|
       row = sheet.row(row_num)
       next unless row[0] # Skip if row is empty
 
