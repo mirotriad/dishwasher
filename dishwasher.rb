@@ -67,7 +67,12 @@ class Dishwasher
       end
 
       if !company_number_corrected.nil? && !company_number_corrected.to_s.strip.empty?
-        corrections_by_name[group_name][:updates][:company_number] = company_number_corrected.to_s.strip
+        # If company number is corrected to "0", set it to nil
+        if company_number_corrected.to_s.strip == "0"
+          corrections_by_name[group_name][:updates][:company_number] = nil
+        else
+          corrections_by_name[group_name][:updates][:company_number] = company_number_corrected.to_s.strip
+        end
       end
 
       if !legal_name_corrected.nil? && !legal_name_corrected.to_s.strip.empty?
